@@ -1,0 +1,18 @@
+proc2 = Process(
+    name="proc2",
+    cmdline="""
+#!/bin/sh
+cd /opt/workdir/database/job_working_directory/000/2;cufflinks 2>&1 | head -n 1 > /opt/workdir/database/tmp/GALAXY_VERSION_STRING_2 2>&1; export PYTHONPATH=/usr/local/galaxy/lib; cufflinks_wrapper.py --input=/opt/workdir/galaxy_files/000/dataset_1.dat --assembled-isoforms-output=/opt/workdir/galaxy_files/000/dataset_4.dat --num-threads="${GALAXY_SLOTS:-4}" -I 300000 -F 0.1 -j 0.15
+""")
+task2 = Task(
+    name = "task2",
+    processes = [ proc2 ],
+    resources = Resources(cpu = 0.1, ram = 0.1*GB, disk = 0.1*GB)
+)
+job2 = Job(
+    cluster = "devcluster", environment = "devel", role = "galaxy",
+    name = "job2",
+    task = task2,
+    container = Container(docker = Docker(image = "nasuno/cufflinks:2.2.1"))
+)
+jobs = [ job2 ]

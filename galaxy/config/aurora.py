@@ -280,8 +280,8 @@ class AuroraJobRunner( AsynchronousJobRunner ):
             out, err = proc.communicate()
             log.debug("post-process stdout=%s", out)
             log.debug("post-process stderr=%s", err)
-            for job_id in statuses.keys():
-                self.detail_job_status(ajs, job_id)
+#            for job_id in statuses.keys():
+#               self.detail_job_status(ajs, job_id)
             return model.Job.states.OK
         else:
             return model.Job.states.QUEUED
@@ -400,9 +400,11 @@ class AuroraJobRunner( AsynchronousJobRunner ):
             aurora_conf = templ1.substitute(id=ajs.job_id,
                                             cmdline=tool_script,
                                             container=ajs.container,
-                                            cpu=4, ram_gb=8, disk_gb=4)
+                                            cpu=0.1, ram_gb=0.1, disk_gb=0.1)
             confpath = "/tmp/galaxyjob%s.aurora" % ajs.job_id
             open(confpath, 'w').write(aurora_conf)
+
+            log.debug(aurora_conf);
 
             templ2 = string.Template(AURORA_JOB_CMD_TEMPL)
             aurora_cmd = templ2.substitute(command="create",

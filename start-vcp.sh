@@ -8,7 +8,7 @@ docker run -d --name mesosmaster --net=host -e MY_HOST_IF=eth1 -v /opt:/opt nasu
 #sleep 5
 
 # start mesosslave container
-docker run -d --name mesosslave --privileged -v /var/lib/docker -v /opt:/opt --net=host -e MY_HOST_IF=eth1 -e ZK_HOST=127.0.0.1 -e MESOS_CPUS=8 -e MESOS_MEM=16000 -e MESOS_DISK=4000 kiwenlau/mesos-aurora:0.1
+docker run -d --name mesosslave --privileged -v /var/lib/docker:/var/lib/docker -v /opt:/opt --net=host -e MY_HOST_IF=eth1 -e ZK_HOST=127.0.0.1 -e MESOS_CPUS=8 -e MESOS_MEM=16000 -e MESOS_DISK=4000 kiwenlau/mesos-aurora:0.1
 
 # start galaxy container
 docker run -d --name galaxy -v /opt:/opt --net=host kiwenlau/pitagora-galaxy:0.1

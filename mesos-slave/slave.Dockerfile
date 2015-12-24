@@ -1,6 +1,8 @@
 FROM nasuno/mesos-aurora
 MAINTAINER kiwenlau@gmail.com
 
+#RUN /usr/local/bin/wrapdocker 2>/tmp/docker-daemon.log && docker pull nasuno/tophat2:2.0.9 && docker pull nasuno/cufflinks:2.2.1
+
 RUN apt-get -y install build-essential python-dev python-boto libcurl4-nss-dev libsasl2-dev libsasl2-modules maven libapr1-dev libsvn-dev
 
 #RUN cp /usr/lib/x86_64-linux-gnu/libcurl-nss.so.4.3.0 /usr/lib
