@@ -15,3 +15,5 @@ ADD init.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init.sh
 
 CMD ["/usr/local/bin/init.sh"]
+
+# docker build -t kiwenlau/mesos-aurora:0.1 -f slave.Dockerfile ./

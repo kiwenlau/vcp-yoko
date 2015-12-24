@@ -15,3 +15,5 @@ ADD config/aurora.py /home/galaxy/galaxy/lib/galaxy/jobs/runners/aurora.py
 ADD config/job2.aurora /tmp/job2.aurora
 
 CMD ["/usr/local/bin/init.sh"]
+
+# docker build -t kiwenlau/pitagora-galaxy:0.1 -f galaxy.Dockerfile ./
