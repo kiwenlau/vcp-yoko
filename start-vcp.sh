@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker rm -f mesosmaster mesosslave galaxy
+docker rm -f $(docker ps -aq)
 
 # start scheduler container
 docker run -d --name mesosmaster --net=host -e MY_HOST_IF=eth1 -v /opt:/opt nasuno/mesos-aurora

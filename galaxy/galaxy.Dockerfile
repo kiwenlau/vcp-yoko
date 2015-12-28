@@ -1,6 +1,8 @@
 FROM nasuno/pitagora-galaxy:latest
 MAINTAINER kiwenlau@gmail.com
 
+RUN apt-get install samtools
+
 ADD config/aurora /usr/local/bin/
 ADD config/clusters.json /etc/aurora/clusters.json
 ADD config/nginx.aurora /tmp/nginx.aurora
